@@ -33,21 +33,21 @@ sitemap.getSites(configuration.sitemap, function(err, sites) {
             let title = yield parser.goto(currentPage).wait('.copyright').evaluate(() => {
                 var indexedData = {page:window.location.href};
                 var tags = document.querySelectorAll('[data-algolia-name]');
+                var setIndexValue = function(indexName, indexValue) {
+                    var parents = indexName.split('.');
+                    var currentChildren = this;
+                    var indexRealName = parents.pop();
+                    parents.forEach(function(parent) {
+                        if(!currentChildren.hasOwnProperty(parent)) {
+                            currentChildren[parent] = {};
+                        }
+                        currentChildren = currentChildren[parent];
+                    });
+
+                    currentChildren[indexRealName] = indexValue;
+                };
+
                 for(var i = 0; i < tags.length; i++) {
-                    var setIndexValue = function(indexName, indexValue) {
-                        var parents = indexName.split('.');
-                        var currentChildren = this;
-                        var indexRealName = parents.pop();
-                        parents.forEach(function(parent) {
-                            if(!currentChildren.hasOwnProperty(parent)) {
-                                currentChildren[parent] = {};
-                            }
-                            currentChildren = currentChildren[parent];
-                        });
-
-                        currentChildren[indexRealName] = indexValue;
-                    };
-
                     var tagToIndex = tags[i];
                     var indexName = tagToIndex.dataset.algoliaName;
                     var indexSeparator = tagToIndex.dataset.algoliaSeparator;
