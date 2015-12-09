@@ -1,0 +1,9 @@
+{
+  "sitemap":"http://domain.com/sitemap.xml",
+  "algolia": {
+      "id":"<Algolia API identifiant>",
+      "key":"<Algolia API private key - do not commit that on github!>",
+      "index":"<Algolia index name>"
+  }
+
+}

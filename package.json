@@ -1,0 +1,17 @@
+{
+  "name": "ghost-algolia-parser",
+  "version": "1.0.0",
+  "description": "A nightmarejs based parser that index the site in algolia",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "matparisot",
+  "license": "ISC",
+  "dependencies": {
+    "algoliasearch": "^3.9.4",
+    "nightmare": "^2.0.8",
+    "sitemapper": "0.0.3",
+    "vo": "^1.0.3"
+  }
+}
