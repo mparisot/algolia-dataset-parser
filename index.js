@@ -30,7 +30,7 @@ sitemap.getSites(configuration.sitemap, function(err, sites) {
         console.log(`Parsing '${currentPage}'`);
         vo(function* () {
             let parser = Nightmare({show:false});
-            let title = yield parser.goto(currentPage).wait('.copyright').evaluate(() => {
+            let title = yield parser.goto(currentPage).wait('body').evaluate(() => {
                 var indexedData = {page:window.location.href};
                 var tags = document.querySelectorAll('[data-algolia-name]');
                 var setIndexValue = function(indexName, indexValue) {
